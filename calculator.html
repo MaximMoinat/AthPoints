@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" data-main="js/main.js" src="js/lib/require-2.3.5.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/calculator.css">
+    <title>PointJs</title>
+</head>
+<body>
+    <table class="table table-condensed table-hover table-striped">
+        <thead><tr>
+            <th>Event</th><th>Performance</th><th>Points</th>
+        </tr></thead>
+        <!-- Table body is generated for each element in events (observable array)-->
+        <tbody data-bind="foreach: events">
+        <tr>
+            <td data-bind="text: eventName"></td>
+            <td>
+                <input type="range" min="0" max="100" data-bind="value: x, valueUpdate: 'input'">
+                <output data-bind="value: x"></output>
+            </td>
+            <td data-bind="text: points"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <pre data-bind="text: csvData"></pre>
+</body>
+</html>
