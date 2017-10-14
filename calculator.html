@@ -17,14 +17,13 @@
             <td data-bind="text: eventName"></td>
             <td>
                 <input type="range"
-                       min="0"
-                       max="100"
                        data-bind="
-                            value: x,
+                            value: sliderValue,
                             attr: { min: performanceMin, max: performanceMax },
                             valueUpdate: 'input'"
+                       class="slider"
                 >
-                <output data-bind="value: x"></output>
+                <output data-bind="value: displayValue"></output>
             </td>
             <td data-bind="text: points"></td>
         </tr>

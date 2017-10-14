@@ -17,14 +17,15 @@ define(function() {
         };
 
         /**
+         * In whole milliseconds or centimeters.
          * @returns float
          */
         this.getReferencePerformance = function() {
             if (this.performanceType == 'TIME') {
-                return this.eventDistance / this.referencePerformance;
+                return Math.round(this.eventDistance / this.referencePerformance * 100);
             }
             // DISTANCE and POINTS types
-            return this.referencePerformance;
+            return Math.round(this.referencePerformance * 100);
         };
 
         /**
@@ -48,5 +49,9 @@ define(function() {
             // DISTANCE and POINTS types
             return this.getReferencePerformance();
         };
+
+        this.getPerformanceDefault = function() {
+            return Math.round((this.getPerformanceUpperBound() + this.getPerformanceLowerBound()) / 2);
+        }
     }
 });

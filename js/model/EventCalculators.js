@@ -6,7 +6,7 @@ define(['lib/knockout-3.4.2', 'lib/d3-4.10.2','model/EventCalculator'], function
         var self = this;
         this.calculatorArray = ko.observableArray([]);
 
-        // TODO: load formulas and events here?
+        // TODO: load formulas and events from csv here instead of in calculatorApp.js?
         self.formulas = formulas;
         self.events = events;
 
