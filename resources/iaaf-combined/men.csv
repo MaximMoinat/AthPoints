@@ -1,17 +1,17 @@
 event,formula,A,B,C
-100 meter,iaaf-track,25.4347,18,1.81
-1000 meter,iaaf-track,0.08713,305.5,1.85
-110 meter horden,iaaf-track,5.74352,28.5,1.92
-1500 meter,iaaf-track,0.03768,480,1.85
-200 meter,iaaf-track,5.8425,38,1.81
-400 meter,iaaf-track,1.53775,82,1.81
-60 meter,iaaf-track,58.015,11.5,1.81
-60 meter horden,iaaf-track,20.5173,15.5,1.92
-Discuswerpen,iaaf-throw,12.91,4,1.1
-Gewichtwerpen,iaaf-throw,47.8338,1.5,1.05
-Hoogspringen,iaaf-jump,0.8465,75,1.42
-Kogelslingeren,iaaf-throw,13.0449,7,1.05
-Kogelstoten,iaaf-throw,51.39,1.5,1.05
-Polsstokhoogspringen,iaaf-jump,0.2797,100,1.35
-Speerwerpen,iaaf-throw,10.14,7,1.08
-Verspringen,iaaf-jump,0.14354,220,1.4
+TRACK_100,iaaf_track,25.4347,18,1.81
+TRACK_1000,iaaf_track,0.08713,305.5,1.85
+TRACK_110H,iaaf_track,5.74352,28.5,1.92
+TRACK_1500,iaaf_track,0.03768,480,1.85
+TRACK_200,iaaf_track,5.8425,38,1.81
+TRACK_400,iaaf_track,1.53775,82,1.81
+TRACK_60,iaaf_track,58.015,11.5,1.81
+TRACK_60H,iaaf_track,20.5173,15.5,1.92
+DISCUS_THROW,iaaf_throw,12.91,4,1.1
+WEIGHT_THROW,iaaf_throw,47.8338,1.5,1.05
+HIGH_JUMP,iaaf_jump,0.8465,75,1.42
+HAMMER_THROW,iaaf_throw,13.0449,7,1.05
+SHOT_PUT,iaaf_throw,51.39,1.5,1.05
+POLE_VAULT,iaaf_jump,0.2797,100,1.35
+JAVELIN_THROW,iaaf_throw,10.14,7,1.08
+LONG_JUMP,iaaf_jump,0.14354,220,1.4

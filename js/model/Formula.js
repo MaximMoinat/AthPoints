@@ -1,4 +1,6 @@
 /**
+ * TODO: rename either Formulas.js or Formula.js. There is no relation between them.
+ * This is actuallly a calculator
  * Created by Maxim on 24-9-2017.
  */
 define(['model/Formulas'], function(formulas) {

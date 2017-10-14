@@ -1,4 +1,5 @@
 /**
+ * TODO: build Formula objects from this, just like the reference events
  * Created by Maxim on 24-9-2017.
  */
 define(['lib/d3-4.10.2'], function(d3) {
@@ -13,6 +14,7 @@ define(['lib/d3-4.10.2'], function(d3) {
                 data.forEach(function(d) {
                     self.formulaMap[d.name.toLowerCase()] = d.formula;
                 });
+                console.log("Formulas loaded");
             }
         );
 

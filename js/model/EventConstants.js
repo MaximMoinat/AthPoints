@@ -1,20 +1,22 @@
 /**
+ * TODO: rename to EventCalculator?
  * Created by Maxim Moinat.
  */
 define(['lib/knockout-3.4.2','model/Formula'], function(ko, Formula) {
-    return function(data, formulas) {
+    return function(data, formulas, refEvents) {
         var self = this;
-        this.eventName = ko.observable(data.event);
-        // this.formulaName = ko.observable(data.formula);
-        // this.mu = ko.observable(data.mu);
-        // this.sigma = ko.observable(data.sigma);
+        this.event = refEvents.getEvent(data.event);
+        this.eventName = ko.observable(this.event.getName());
 
-        this.formula = "A*(x-B)^C".replace('A', data.A).replace('B', data.B).replace('C', data.C);
+        // TODO: for timed events, use speed as variable
+        this.performanceMin = ko.observable(this.event.getPerformanceLowerBound());
+        this.performanceMax = ko.observable(this.event.getPerformanceUpperBound());
+
+        // this.formula = "A*(x-B)^C".replace('A', data.A).replace('B', data.B).replace('C', data.C);
         var formulaString = formulas.getFormula(data.formula);
         this.formula = new Formula(formulaString, data);
 
-
-        this.x = ko.observable(25);
+        this.x = ko.observable(this.event.getReferencePerformance());
         this.points = ko.computed(function () {
             return self.formula.evaluate(this.x());
         }, this);

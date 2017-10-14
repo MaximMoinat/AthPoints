@@ -13,11 +13,16 @@
             <th>Event</th><th>Performance</th><th>Points</th>
         </tr></thead>
         <!-- Table body is generated for each element in events (observable array)-->
-        <tbody data-bind="foreach: events">
+        <tbody data-bind="foreach: eventCalculators">
         <tr>
             <td data-bind="text: eventName"></td>
             <td>
-                <input type="range" min="0" max="100" data-bind="value: x, valueUpdate: 'input'">
+                <input type="range"
+                       data-bind="
+                            value: x,
+                            attr: { min: performanceMin, max: performanceMax },
+                            valueUpdate: 'input'"
+                >
                 <output data-bind="value: x"></output>
             </td>
             <td data-bind="text: points"></td>
