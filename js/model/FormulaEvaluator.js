@@ -1,6 +1,4 @@
 /**
- * TODO: rename either Formulas.js or Formula.js. There is no relation between them.
- * This is actuallly a calculator
  * Created by Maxim on 24-9-2017.
  */
 define(['model/Formulas'], function(formulas) {
@@ -20,10 +18,14 @@ define(['model/Formulas'], function(formulas) {
        * Evaluate the formula for a given value of x.
        * Assumes x is the variable in the formula string
        * @param x
-       * @returns {numeric}
+       * @returns float
        */
       this.evaluate = function(x) {
           var result = eval(self.formula);
+          if (isNaN(result)) {
+              return 0;
+          }
+
           if (self.doFloor) {
               result = Math.floor(result);
           }

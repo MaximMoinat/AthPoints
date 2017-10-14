@@ -6,7 +6,6 @@ define(['lib/d3-4.10.2','model/Event'], function(d3, Event) {
         var self = this;
         self.eventMap = {};
 
-        // Build the formula map
         $.get(eventPath,
             function (rawText) {
                 var data = d3.csvParse(rawText);

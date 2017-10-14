@@ -1,7 +1,7 @@
 name,system,dependant,formula
 IAAF_track,IAAF_combined,points,a * (b - x) ** c
 IAAF_throw,IAAF_combined,points,a * (x - b) ** c
-IAAF_jump,IAAF_combined,points,a * (x - b * 100) ** c
+IAAF_jump,IAAF_combined,points,a * (x *100 - b) ** c
 AU_track,AU,points,a * (x - b)**c
 AU_field,AU,points,a * (b - x)**c
 AU_track,AU,performance,(x/a)**(1/c) + b

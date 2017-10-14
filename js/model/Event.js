@@ -6,8 +6,8 @@ define(function() {
         this.eventKey = data.event_key;
         this.abbreviation = data.name_short;
         this.performanceType = data.type;
-        this.eventDistance = data.distance; // string
-        this.referencePerformance = data.wr; // string
+        this.eventDistance = Number(data.distance); // string
+        this.referencePerformance = Number(data.wr); // string
 
         /**
          * @returns string
@@ -20,11 +20,11 @@ define(function() {
          * @returns float
          */
         this.getReferencePerformance = function() {
-            if (this.distance == 'null') {
-                return this.referencePerformance;
+            if (this.performanceType == 'TIME') {
+                return this.eventDistance / this.referencePerformance;
             }
-
-            return this.eventDistance / this.referencePerformance;
+            // DISTANCE and POINTS types
+            return this.referencePerformance;
         };
 
         /**

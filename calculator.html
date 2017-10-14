@@ -12,12 +12,13 @@
         <thead><tr>
             <th>Event</th><th>Performance</th><th>Points</th>
         </tr></thead>
-        <!-- Table body is generated for each element in events (observable array)-->
-        <tbody data-bind="foreach: eventCalculators">
+        <tbody data-bind="foreach: eventCalculators.calculatorArray">
         <tr>
             <td data-bind="text: eventName"></td>
             <td>
                 <input type="range"
+                       min="0"
+                       max="100"
                        data-bind="
                             value: x,
                             attr: { min: performanceMin, max: performanceMax },
@@ -29,7 +30,5 @@
         </tr>
         </tbody>
     </table>
-
-    <pre data-bind="text: csvData"></pre>
 </body>
 </html>
