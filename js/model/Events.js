@@ -16,7 +16,7 @@ define(['lib/d3-4.10.2','model/Event'], function(d3, Event) {
             }
         );
 
-        this.getEvent = function(eventKey) {
+        this.get = function(eventKey) {
             return self.eventMap[eventKey.toLowerCase()];
         };
     }

@@ -1,8 +1,7 @@
 /**
- * TODO: build Formula objects from this, just like the reference events
  * Created by Maxim on 24-9-2017.
  */
-define(['lib/d3-4.10.2'], function(d3) {
+define(['lib/d3-4.10.2', 'model/Formula'], function(d3, Formula) {
     return function (formulaPath) {
         var self = this;
         self.formulaMap = {};
@@ -12,14 +11,14 @@ define(['lib/d3-4.10.2'], function(d3) {
             function (rawText) {
                 var data = d3.csvParse(rawText);
                 data.forEach(function(d) {
-                    self.formulaMap[d.name.toLowerCase()] = d.formula;
+                    self.formulaMap[d.name.toLowerCase()] = new Formula(d);
                 });
                 console.log("Formulas loaded");
             }
         );
 
-        this.getFormula = function(formulaName) {
+        this.get = function(formulaName) {
             return self.formulaMap[formulaName.toLowerCase()];
-        }
+        };
     }
 });

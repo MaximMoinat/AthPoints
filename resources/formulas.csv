@@ -1,11 +1,9 @@
-name,system,dependant,formula
-IAAF_track,IAAF_combined,points,a * (b - x) ** c
-IAAF_throw,IAAF_combined,points,a * (x - b) ** c
-IAAF_jump,IAAF_combined,points,a * (x *100 - b) ** c
-AU_track,AU,points,a * (x - b)**c
-AU_field,AU,points,a * (b - x)**c
-AU_track,AU,performance,(x/a)**(1/c) + b
-AU_field,AU,performance,b - (x/a)**(1/c)
-Mercier_track,Mercier,points,(a * (x / d) - b + c) / y
-Mercier_field,Mercier,points,(a * sqrt(x) - b + c) / y
-Mercier_multi,Mercier,points,(a * x + b + x) / y
+name,system,formula_points,formula_performance
+IAAF_track,IAAF_combined,a * (b - x) ** c,b - (x/a) ** (1/c)
+IAAF_throw,IAAF_combined,a * (x - b) ** c,b + (x/a) ** (1/c)
+IAAF_jump,IAAF_combined,a * (x *100 - b) ** c,(b + (x/a) ** (1/c)) / 100
+AU_track,AU,a * (x - b) ** c,b + (x/a) ** (1/c)
+AU_field,AU,a * (b - x) ** c,b - (x/a) ** (1/c)
+Mercier_track,Mercier,(a * (x / d) - b + c) / y,
+Mercier_field,Mercier,(a * sqrt(x) - b + c) / y,
+Mercier_multi,Mercier,(a * x + b + x) / y,

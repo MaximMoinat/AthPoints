@@ -18,14 +18,14 @@
             <td>
                 <input type="range"
                        data-bind="
-                            value: sliderValue,
+                            value: performance,
                             attr: { min: performanceMin, max: performanceMax },
                             valueUpdate: 'input'"
                        class="slider"
                 >
-                <output data-bind="value: displayValue"></output>
+                <output data-bind="value: performanceFormatted"></output>
             </td>
-            <td data-bind="text: points"></td>
+            <td data-bind="text: pointsDependant"></td>
         </tr>
         </tbody>
     </table>
