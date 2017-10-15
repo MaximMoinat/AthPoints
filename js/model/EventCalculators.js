@@ -24,8 +24,12 @@ define(['lib/knockout-3.4.2', 'lib/d3-4.10.2','model/EventCalculator'], function
             );
         };
 
-        this.getAll = function() {
-            return this.calculatorArray;
+        this.updateAllPoints = function(masterPoints) {
+            var calculator;
+            for(var i in self.calculatorArray()) {
+                calculator = self.calculatorArray()[i];
+                calculator.points(masterPoints);
+            }
         }
     }
 });

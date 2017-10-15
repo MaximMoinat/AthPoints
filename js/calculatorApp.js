@@ -4,6 +4,7 @@
 define(['lib/knockout-3.4.2', 'lib/d3-4.10.2', 'model/EventCalculators', 'model/Formulas', 'model/Events'],
     function(ko, d3, EventCalculators, Formulas, Events) {
         return function() {
+            var self = this;
             // Load all csv files, synchronously
             $.ajaxSetup({async:false}); // files have to be loaded sequentially
             this.formulas = new Formulas("./resources/formulas.csv");
@@ -13,6 +14,12 @@ define(['lib/knockout-3.4.2', 'lib/d3-4.10.2', 'model/EventCalculators', 'model/
             this.eventCalculators = new EventCalculators(this.formulas, this.events);
             this.eventCalculators.addFromConstants("./resources/iaaf-combined/men.csv", "Men");
             this.eventCalculators.addFromConstants("./resources/iaaf-combined/women.csv", "Women");
+
+            // Observable to change the points input of all event calculators
+            this.pointsMaster = ko.observable();
+            this.pointsMaster.subscribe(function(points) {
+                this.eventCalculators.updateAllPoints(points);
+            }, this);
         };
     }
 );

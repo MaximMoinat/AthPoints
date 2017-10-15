@@ -10,7 +10,7 @@
 <body>
     <table class="table table-condensed table-hover table-striped">
         <thead><tr>
-            <th>Event</th><th>Performance</th><th>Points</th>
+            <th>Event</th><th>Points</th><th>Performance</th>
         </tr></thead>
         <tbody data-bind="foreach: eventCalculators.calculatorArray">
         <tr>
@@ -18,14 +18,14 @@
             <td>
                 <input type="range"
                        data-bind="
-                            value: performance,
-                            attr: { min: performanceMin, max: performanceMax },
+                            value: points,
+                            attr: { min: pointsMin, max: pointsMax },
                             valueUpdate: 'input'"
                        class="slider"
                 >
-                <output data-bind="value: performanceInputFormatted"></output>
+                <output data-bind="value: points"></output>
             </td>
-            <td data-bind="text: pointsOutput"></td>
+            <td data-bind="text: performanceOutputFormatted"></td>
         </tr>
         </tbody>
     </table>

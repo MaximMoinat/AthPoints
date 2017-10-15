@@ -8,6 +8,7 @@ define(['lib/knockout-3.4.2'], function(ko) {
         this.event = events.get(data.event);
         this.formula = formulas.get(data.formula);
         this.constants = data; // TODO: remove the other properties from the object
+        var defaultPoints = 1000;
 
         // Note: order of defining the function and using it is important. Can this be done better? This now gives spaghetti code...
         this.setPerformance = function(performance) {
@@ -19,27 +20,47 @@ define(['lib/knockout-3.4.2'], function(ko) {
             return self.performance()/100;
         };
 
-        /* The observables */
-        this.eventName = ko.observable(eventNamePrefix + " - " + this.event.getName());
-
-        this.performance = ko.observable();
-        // Note: slider thumbs are only correctly initialized when done via timeout. Even if the timeout is 0.
-        setTimeout(this.setPerformance, 0, this.formula.calculatePerformance(1000, this.constants));
-
-        this.getPerformanceAsString = function() {
+        this.formatPerformance = function(performance) {
             // TODO: display time as mm:ss.xx
-            var displayVal = Math.round(self.performance())/100;
-            return displayVal.toLocaleString('en-US', {minimumFractionDigits: 2});
+            return performance.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
         };
 
-        this.performanceFormatted = ko.computed(this.getPerformanceAsString);
+        /**
+         *  The observables
+         */
+        this.eventName = ko.observable(eventNamePrefix + " - " + this.event.getName());
 
-        this.pointsDependant = ko.computed(function () {
+        // Performance and points as input
+        this.performance = ko.observable();
+        this.points = ko.observable();
+
+        // Performance and points as output
+        this.performanceOutput = ko.computed(function () {
+            return this.formula.calculatePerformance(this.points(), this.constants) * 100;
+        }, this);
+        this.pointsOutput = ko.computed(function () {
             return this.formula.calculatePoints(this.getPerformance(), this.constants);
         }, this);
 
-        // TODO: for timed events, use speed as variable
+        // Formatting of performance
+        this.performanceInputFormatted = ko.pureComputed(function () {
+            return this.formatPerformance(this.performance()/100);
+        },this);
+        this.performanceOutputFormatted = ko.pureComputed(function () {
+            return this.formatPerformance(this.performanceOutput()/100);
+        },this);
+
+        // TODO: for timed events, use speed as variable so better performance is higher value
         this.performanceMin = ko.observable(this.event.getPerformanceLowerBound());
         this.performanceMax = ko.observable(this.event.getPerformanceUpperBound());
+
+        // TODO: make points min/max dependant on formula used
+        this.pointsMin = ko.observable(0);
+        this.pointsMax = ko.observable(1500);
+
+        // Set slider defaults
+        // Note: slider thumbs are only correctly initialized when done via timeout. Even if the timeout is 0.
+        setTimeout(this.setPerformance, 0, this.formula.calculatePerformance(defaultPoints, this.constants));
+        setTimeout(function () {self.points(defaultPoints)}, 0);
     }
 });
