@@ -62,17 +62,17 @@ define(function() {
             return Math.round((this.getPerformanceUpperBound() + this.getPerformanceLowerBound()) / 2);
         };
 
-        // TODO: standardize the enums and use string equals
+        // TODO: standardize the enums
         this.isTimed = function() {
-            return this.performanceType == 'TIME';
+            return this.performanceType === 'TIME';
         };
 
         this.isDistance = function() {
-            return this.performanceType == 'DISTANCE';
+            return this.performanceType === 'DISTANCE';
         };
 
         this.isScored = function() {
-            return this.performanceType == 'POINTS';
+            return this.performanceType === 'POINTS';
         };
     }
 });

@@ -19,3 +19,15 @@ The following special character are reserved:
  - `d` for the distance of a track or road event
  
 Otherwise conflicts may occur when replacing the constants with their numeric value.
+
+## Formulas
+Allowed rounding types:
+ - `FLOOR`
+ - `ROUND`
+ - `CEIL`
+ 
+## Events
+Allowed performance types:
+ - `TIME`
+ - `DISTANCE`
+ - `POINTS`

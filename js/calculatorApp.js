@@ -12,8 +12,10 @@ define(['lib/knockout-3.4.2', 'lib/d3-4.10.2', 'model/EventCalculators', 'model/
             $.ajaxSetup({async:true});
 
             this.eventCalculators = new EventCalculators(this.formulas, this.events);
-            this.eventCalculators.addFromConstants("./resources/mercier/women.csv", "Mercier - Women");
-            this.eventCalculators.addFromConstants("./resources/mercier/men.csv", "Mercier - Men");
+            this.eventCalculators.addFromConstants("./resources/iaaf-hungarian/women.csv", "Hungarian - Women");
+            this.eventCalculators.addFromConstants("./resources/iaaf-hungarian/men.csv", "Hungarian - Men");
+            // this.eventCalculators.addFromConstants("./resources/mercier/women.csv", "Mercier - Women");
+            // this.eventCalculators.addFromConstants("./resources/mercier/men.csv", "Mercier - Men");
             // this.eventCalculators.addFromConstants("./resources/iaaf-combined/men.csv", "Men");
             // this.eventCalculators.addFromConstants("./resources/iaaf-combined/women.csv", "IAAF - Women");
 

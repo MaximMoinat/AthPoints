@@ -5,10 +5,18 @@ Source: [Mercier Scoring Tables 1999: A How-To Guide](http://myweb.lmu.edu/jmure
 ## Formulas
 ||||
 |--|--|--|
-|Timed Events|`(a * (d / x) - b + c) / y`|`A * d/x + B`|
-|Distance Events|`(a * √x - b + c) / y`|`A * √x + B`|
-|Points Events|`(a * x - b + c) / y`|`A * x + B`|
+|Timed Events|`(a * (d / x) - b + c) / y`|
+|Distance Events|`(a * √x - b + c) / y`  |
+|Points Events|`(a * x - b + c) / y`     |
 
-where for the simplified formula:
-`A = a/y`
-`B = (c-b)/y`
+### Simplified form
+The above formulas use the original constants. However, we can simplify these to get a better understanding of the relationship.
+
+||||
+|--|--|--|
+|Timed Events|`A * d/x + B`|
+|Distance Events|`A * √x + B`|
+|Points Events|`A * x + B`|
+
+where:\
+`A = a/y` and  `B = (c-b)/y`

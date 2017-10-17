@@ -10,7 +10,7 @@ This folder also contains a readme with an explanation if you want to contribute
 
 The following scoring systems are either incorporated are going to be incorporated:
  - [x] [IAAF combined events](resources/iaaf-combined)
- - [ ] IAAF Hungarian
+ - [x] [IAAF Hungarian](resources/iaaf-hungarian)
  - [ ] Dutch AtletiekUnie Competition
  - [x] [Mercier](resources/mercier)
  - [ ] Howard Grubb age grading

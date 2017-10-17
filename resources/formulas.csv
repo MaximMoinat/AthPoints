@@ -1,9 +1,11 @@
-name,scoring_system,formula_points,formula_performance
-IAAF_track,IAAF_combined,a * (b - x) ** c,b - (x/a) ** (1/c)
-IAAF_throw,IAAF_combined,a * (x - b) ** c,b + (x/a) ** (1/c)
-IAAF_jump,IAAF_combined,a * (x *100 - b) ** c,(b + (x/a) ** (1/c)) / 100
-AU_track,AU,a * (x - b) ** c,b + (x/a) ** (1/c)
-AU_field,AU,a * (b - x) ** c,b - (x/a) ** (1/c)
-mercier_track,Mercier,(a * (d / x) - b + c) / y,(d * a ) / (x * y - c + b)
-mercier_field,Mercier,(a * Math.sqrt(x) - b + c) / y,((x * y - c + b) / a) ** 2
-mercier_multi,Mercier,(a * x - b + c) / y,(x * y - c + b) / a
+name,scoring_system,formula_points,formula_performance,rounding_type
+IAAF_track,IAAF_combined,a * (b - x) ** c,b - (x/a) ** (1/c),FLOOR
+IAAF_throw,IAAF_combined,a * (x - b) ** c,b + (x/a) ** (1/c),FLOOR
+IAAF_jump,IAAF_combined,a * (x *100 - b) ** c,(b + (x/a) ** (1/c)) / 100,FLOOR
+mercier_track,Mercier,(a * (d / x) - b + c) / y,(d * a ) / (x * y - c + b),FLOOR
+mercier_field,Mercier,(a * Math.sqrt(x) - b + c) / y,((x * y - c + b) / a) ** 2,FLOOR
+mercier_multi,Mercier,(a * x - b + c) / y,(x * y - c + b) / a,FLOOR
+hungarian_track,IAAF_hungarian,a * (x + b) ** 2 + c,-1 * ((x - c) / a) ** (0.5) - b,ROUND
+hungarian_field,IAAF_hungarian,a * (x + b) ** 2 + c,((x - c) / a) ** (0.5) - b,ROUND
+AU_track,AU,a * (x - b) ** c,b + (x/a) ** (1/c),FLOOR
+AU_field,AU,a * (b - x) ** c,b - (x/a) ** (1/c),FLOOR

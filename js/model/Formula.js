@@ -8,11 +8,12 @@ define(function() {
         this.system = data.system;
         this.formulaPoints = data.formula_points;
         this.formulaPerformance = data.formula_performance;
-        this.doFloorPoints = true;
+        this.pointsRoundingType = data.rounding_type;
 
         this.calculatePoints = function(performance, constants) {
             var formulaParsed = self.insertConstants(self.formulaPoints, constants);
-            return self.eval(performance, formulaParsed, self.doFloorPoints);
+            var pointsRaw = self.eval(performance, formulaParsed);
+            return this.doPointsRounding(pointsRaw);
         };
 
         this.calculatePerformance = function(points, constants) {
@@ -33,16 +34,35 @@ define(function() {
             return formula;
         };
 
-        this.eval = function(x, formula, doFloor) {
-            var result = eval(formula);
+        this.eval = function(x, formula) {
+            var result = Number(eval(formula));
             if (isNaN(result)) {
                 return 0;
             }
-
-            if (doFloor) {
-                result = Math.floor(result);
-            }
             return result;
+        };
+
+        this.doPointsRounding = function(result) {
+            if (self.doFloorPoints()) {
+                return Math.floor(result);
+            } else if (self.doRoundPoints()) {
+                return Math.round(result);
+            } else if (self.doCeilPoints()) {
+                return Math.ceil(result);
+            }
+        };
+
+        // TODO: standardize the enums
+        this.doFloorPoints = function() {
+            return self.pointsRoundingType === "FLOOR";
+        };
+
+        this.doRoundPoints = function() {
+            return self.pointsRoundingType === "ROUND";
+        };
+
+        this.doCeilPoints = function() {
+            return self.pointsRoundingType === "CEIL";
         };
     }
 });
