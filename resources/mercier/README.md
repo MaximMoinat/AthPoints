@@ -12,4 +12,3 @@ Source: [Mercier Scoring Tables 1999: A How-To Guide](http://myweb.lmu.edu/jmure
 where for the simplified formula:
 `A = a/y`
 `B = (c-b)/y`
-
