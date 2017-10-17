@@ -17,6 +17,14 @@ define(function() {
         };
 
         /**
+         * equals 0 for field events
+         * @returns {number}
+         */
+        this.getDistance = function() {
+            return this.eventDistance;
+        };
+
+        /**
          * In whole milliseconds or centimeters.
          * @returns float
          */

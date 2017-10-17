@@ -4,10 +4,25 @@
 define(['lib/knockout-3.4.2', 'util/Time'], function(ko, Time) {
     return function(data, eventNamePrefix, formulas, events) {
         var self = this;
-        // TODO: unpack data, like for Event => put constants in separate object
+        this.creationSuccessful = true;
+
         this.event = events.get(data.event);
+        if (typeof this.event === 'undefined') {
+            console.log("Event " + data.event + " was not recognised.")
+            this.creationSuccessful = false;
+            return;
+        }
+
         this.formula = formulas.get(data.formula);
+        if (typeof this.formula === 'undefined') {
+            console.log("Formula " + data.formula + " was not recognised.")
+            this.creationSuccessful = false;
+            return;
+        }
+
         this.constants = data; // TODO: remove the other properties from the object
+        this.constants.d = this.event.getDistance(); //
+
         var defaultPoints = 1000;
         var timeParser = new Time();
 

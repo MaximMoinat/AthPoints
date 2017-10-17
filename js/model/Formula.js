@@ -6,8 +6,8 @@ define(function() {
         var self = this;
         this.name = data.name;
         this.system = data.system;
-        this.formulaPoints = data.formula_points.toLowerCase();
-        this.formulaPerformance = data.formula_performance.toLowerCase();
+        this.formulaPoints = data.formula_points;
+        this.formulaPerformance = data.formula_performance;
         this.doFloorPoints = true;
 
         this.calculatePoints = function(performance, constants) {
@@ -26,7 +26,8 @@ define(function() {
             var constantName;
             for (constantName in constants) {
                 constantValue = constants[constantName];
-                constantName = constantName.toLowerCase();
+                constantName = constantName;
+                // TODO: only replace single characters with regex. (e.g. problem when using 'Math.sqrt' and the constant a)
                 formula = formula.replace(constantName, constantValue);
             }
             return formula;

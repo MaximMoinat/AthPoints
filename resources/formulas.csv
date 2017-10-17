@@ -1,9 +1,9 @@
-name,system,formula_points,formula_performance
+name,scoring_system,formula_points,formula_performance
 IAAF_track,IAAF_combined,a * (b - x) ** c,b - (x/a) ** (1/c)
 IAAF_throw,IAAF_combined,a * (x - b) ** c,b + (x/a) ** (1/c)
 IAAF_jump,IAAF_combined,a * (x *100 - b) ** c,(b + (x/a) ** (1/c)) / 100
 AU_track,AU,a * (x - b) ** c,b + (x/a) ** (1/c)
 AU_field,AU,a * (b - x) ** c,b - (x/a) ** (1/c)
-Mercier_track,Mercier,(a * (x / d) - b + c) / y,
-Mercier_field,Mercier,(a * sqrt(x) - b + c) / y,
-Mercier_multi,Mercier,(a * x + b + x) / y,
+mercier_track,Mercier,(a * (d / x) - b + c) / y,(d * a ) / (x * y - c + b)
+mercier_field,Mercier,(a * Math.sqrt(x) - b + c) / y,((x * y - c + b) / a) ** 2
+mercier_multi,Mercier,(a * x - b + c) / y,(x * y - c + b) / a

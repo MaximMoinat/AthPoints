@@ -5,15 +5,14 @@ This repository has two purposes:
  - provide interactive visualizations of these scoring systems
  
 ## Scoring systems
-Every scoring system has two parts: the formula and the constants. In this repository, the data for both are stored in csv files.
-All the formulas are stored in [`resources/formulas.csv`](resources/formulas.csv). For each formula, a formula to calculate points from a performance and an inverse formula is supplied, called `formula_points` and `formula_performance` respectively.
-The value of the constants for each event are stored in separate csv files.
+Every scoring system has two parts: the formula and the constants. In this repository, the data files for both are stored in csv format and can be found in the [`resources`](resources) folder.
+This folder also contains a readme with an explanation if you want to contribute to this.
 
 The following scoring systems are either incorporated are going to be incorporated:
  - [x] [IAAF combined events](resources/iaaf-combined)
  - [ ] IAAF Hungarian
  - [ ] Dutch AtletiekUnie Competition
- - [ ] Mercier
+ - [x] [Mercier](resources/mercier)
  - [ ] Howard Grubb age grading
 
 ## Technology
@@ -22,3 +21,9 @@ The following scoring systems are either incorporated are going to be incorporat
  - requireJS, to create the illusion of OOP with JS
  - Bootstrap, for pretty tables
  - Jquery, for get requests
+ 
+## Contribute
+You are welcome to ask questions, raise issues or contribute to this repository.
+Contributing can be done on two areas:
+ * develop javascript to create a new visualization
+ * update/add to scoring systems
