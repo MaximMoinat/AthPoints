@@ -27,7 +27,6 @@ define(function() {
             var constantName;
             for (constantName in constants) {
                 constantValue = constants[constantName];
-                constantName = constantName;
                 // TODO: only replace single characters with regex. (e.g. problem when using 'Math.sqrt' and the constant a)
                 formula = formula.replace(constantName, constantValue);
             }
