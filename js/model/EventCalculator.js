@@ -1,7 +1,7 @@
 /**
  * Created by Maxim Moinat.
  */
-define(['lib/knockout-3.4.2'], function(ko) {
+define(['lib/knockout-3.4.2', 'util/Time'], function(ko, Time) {
     return function(data, eventNamePrefix, formulas, events) {
         var self = this;
         // TODO: unpack data, like for Event => put constants in separate object
@@ -9,6 +9,7 @@ define(['lib/knockout-3.4.2'], function(ko) {
         this.formula = formulas.get(data.formula);
         this.constants = data; // TODO: remove the other properties from the object
         var defaultPoints = 1000;
+        var timeParser = new Time();
 
         // Note: order of defining the function and using it is important. Can this be done better? This now gives spaghetti code...
         this.setPerformance = function(performance) {
@@ -22,6 +23,9 @@ define(['lib/knockout-3.4.2'], function(ko) {
 
         this.formatPerformance = function(performance) {
             // TODO: display time as mm:ss.xx
+            if (self.event.isTimed()) {
+                return timeParser.toHMS(performance);
+            }
             return performance.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
         };
 

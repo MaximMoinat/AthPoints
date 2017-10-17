@@ -21,7 +21,7 @@ define(function() {
          * @returns float
          */
         this.getReferencePerformance = function() {
-            if (this.performanceType == 'TIME') {
+            if (this.isTimed()) {
                 return Math.round(this.eventDistance / this.referencePerformance * 100);
             }
             // DISTANCE and POINTS types
@@ -32,7 +32,7 @@ define(function() {
          * @returns float
          */
         this.getPerformanceLowerBound = function() {
-            if (this.performanceType == 'TIME') {
+            if (this.isTimed()) {
                 return this.getReferencePerformance();
             }
             // DISTANCE and POINTS types
@@ -43,7 +43,7 @@ define(function() {
          * @returns float
          */
         this.getPerformanceUpperBound = function() {
-            if (this.performanceType == 'TIME') {
+            if (this.isTimed()) {
                 return 2 * this.getReferencePerformance();
             }
             // DISTANCE and POINTS types
@@ -52,6 +52,19 @@ define(function() {
 
         this.getPerformanceDefault = function() {
             return Math.round((this.getPerformanceUpperBound() + this.getPerformanceLowerBound()) / 2);
-        }
+        };
+
+        // TODO: standardize the enums and use string equals
+        this.isTimed = function() {
+            return this.performanceType == 'TIME';
+        };
+
+        this.isDistance = function() {
+            return this.performanceType == 'DISTANCE';
+        };
+
+        this.isScored = function() {
+            return this.performanceType == 'POINTS';
+        };
     }
 });
