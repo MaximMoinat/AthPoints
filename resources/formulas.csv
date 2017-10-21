@@ -9,3 +9,5 @@ hungarian_track,IAAF_hungarian,a * (x + b) ** 2 + c,-1 * ((x - c) / a) ** (0.5) 
 hungarian_field,IAAF_hungarian,a * (x + b) ** 2 + c,((x - c) / a) ** (0.5) - b,ROUND
 AU_track,AU,a * (x - b) ** c,b + (x/a) ** (1/c),FLOOR
 AU_field,AU,a * (b - x) ** c,b - (x/a) ** (1/c),FLOOR
+grubb_track,grubb_percentage,(100 * a) / (x * b),(100 * a) / (x * b),FLOOR
+grubb_field,grubb_percentage,(100 * x * b) / a,(x * a) / (100 * b),FLOOR

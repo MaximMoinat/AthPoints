@@ -23,7 +23,6 @@ define(['lib/knockout-3.4.2', 'util/Time'], function(ko, Time) {
         this.constants = data; // TODO: remove the other properties from the object
         this.constants.d = this.event.getDistance(); //
 
-        var defaultPoints = 1000;
         var timeParser = new Time();
 
         // Note: order of defining the function and using it is important. Can this be done better? This now gives spaghetti code...
@@ -73,13 +72,13 @@ define(['lib/knockout-3.4.2', 'util/Time'], function(ko, Time) {
         this.performanceMin = ko.observable(this.event.getPerformanceLowerBound());
         this.performanceMax = ko.observable(this.event.getPerformanceUpperBound());
 
-        // TODO: make points min/max dependant on formula used
+        var referencePoints = this.formula.calculatePoints(this.event.getReferencePerformance() / 100, this.constants)
         this.pointsMin = ko.observable(0);
-        this.pointsMax = ko.observable(1500);
+        this.pointsMax = ko.observable(referencePoints);
 
         // Set slider defaults
         // Note: slider thumbs are only correctly initialized when done via timeout. Even if the timeout is 0.
-        setTimeout(this.setPerformance, 0, this.formula.calculatePerformance(defaultPoints, this.constants));
-        setTimeout(function () {self.points(defaultPoints)}, 0);
+        setTimeout(this.setPerformance, 0, this.event.getReferencePerformance() / 100);
+        setTimeout(this.points, 0, referencePoints);
     }
 });

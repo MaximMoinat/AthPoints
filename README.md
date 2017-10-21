@@ -13,7 +13,7 @@ The following scoring systems are either incorporated are going to be incorporat
  - [x] [IAAF Hungarian](resources/iaaf-hungarian)
  - [ ] Dutch AtletiekUnie Competition
  - [x] [Mercier](resources/mercier)
- - [ ] Howard Grubb age grading
+ - [x] [Howard Grubb percentage grading](resources/grubb)
 
 ## Technology
  - KnockoutJS, to create reactive pages with limited html
