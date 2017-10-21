@@ -19,7 +19,7 @@ define(['lib/knockout-3.4.2', 'lib/d3-4.10.2','model/EventCalculator'], function
                         var eventCalculator = new EventCalculator(d, prefix, self.formulas, self.events);
                         if (eventCalculator.creationSuccessful) {
                             self.calculatorArray.push(eventCalculator)
-                        };
+                        }
                     });
                     console.log(prefix + " Event calculators loaded");
                 }

@@ -13,7 +13,8 @@ define(['lib/knockout-3.4.2', 'util/Time'], function(ko, Time) {
             return;
         }
 
-        this.formula = formulas.get(data.formula);
+        // Create a new formula object
+        this.formula = $.extend({},formulas.get(data.formula));
         if (typeof this.formula === 'undefined') {
             console.log("Formula " + data.formula + " was not recognised.")
             this.creationSuccessful = false;
@@ -22,6 +23,7 @@ define(['lib/knockout-3.4.2', 'util/Time'], function(ko, Time) {
 
         this.constants = data; // TODO: remove the other properties from the object
         this.constants.d = this.event.getDistance(); //
+        this.formula.buildConstants(this.event, this.constants);
 
         var timeParser = new Time();
 
@@ -36,7 +38,6 @@ define(['lib/knockout-3.4.2', 'util/Time'], function(ko, Time) {
         };
 
         this.formatPerformance = function(performance) {
-            // TODO: display time as mm:ss.xx
             if (self.event.isTimed()) {
                 return timeParser.toHMS(performance);
             }
@@ -54,10 +55,10 @@ define(['lib/knockout-3.4.2', 'util/Time'], function(ko, Time) {
 
         // Performance and points as output
         this.performanceOutput = ko.computed(function () {
-            return this.formula.calculatePerformance(this.points(), this.constants) * 100;
+            return this.formula.calculatePerformance(this.points()) * 100;
         }, this);
         this.pointsOutput = ko.computed(function () {
-            return this.formula.calculatePoints(this.getPerformance(), this.constants);
+            return this.formula.calculatePoints(this.getPerformance());
         }, this);
 
         // Formatting of performance

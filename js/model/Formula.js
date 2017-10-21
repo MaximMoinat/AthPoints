@@ -1,45 +1,53 @@
 /**
  * Created by Maxim on 15-10-2017.
  */
-define(function() {
+define(['util/FormulaHelper'],function(FormulaHelper) {
     return function (data) {
         var self = this;
+        this.helper = new FormulaHelper();
         this.name = data.name;
         this.system = data.system;
         this.formulaPoints = data.formula_points;
         this.formulaPerformance = data.formula_performance;
         this.pointsRoundingType = data.rounding_type;
+        this.isBuild = false;
+        this.event = null;
+        this.formulaPointsParsed = null;
+        this.formulaPerformanceParsed = null;
+        this.zeroPointPerformance = null;
 
-        this.calculatePoints = function(performance, constants) {
-            var formulaParsed = self.insertConstants(self.formulaPoints, constants);
-            var pointsRaw = self.eval(performance, formulaParsed);
+        this.buildConstants = function(event, constants) {
+            this.event = event;
+            this.formulaPointsParsed = this.helper.insertConstants(self.formulaPoints, constants);
+            this.formulaPerformanceParsed = this.helper.insertConstants(self.formulaPerformance, constants);
+            this.isBuild = true;
+            this.zeroPointPerformance = this.calculatePerformance(0);
+        };
+
+        this.calculatePoints = function(performance) {
+            if (!this.isBuild) {
+                console.log("Formula object  " + this.name + " constants not build")
+                return null;
+            }
+
+            // If timed performance worse than 0 point performance, set to zero points.
+            // prevents e.g. points going up again or negative points.
+            if (this.event.isTimed() && performance > this.zeroPointPerformance) {
+                return 0;
+            }
+
+            var pointsRaw = this.helper.eval(performance, this.formulaPointsParsed);
             return this.doPointsRounding(pointsRaw);
         };
 
-        this.calculatePerformance = function(points, constants) {
-            var formulaParsed = self.insertConstants(self.formulaPerformance, constants);
-            return self.eval(points, formulaParsed, false);
+        this.calculatePerformance = function(points) {
+            if (!this.isBuild) {
+                console.log("Formula object " + this.name + " constants not build")
+                return null;
+            }
+            return this.helper.eval(points, this.formulaPerformanceParsed);
         };
 
-        /** Static utility functions **/
-        this.insertConstants = function(formula, constants) {
-            var constantValue;
-            var constantName;
-            for (constantName in constants) {
-                constantValue = constants[constantName];
-                // TODO: only replace single characters with regex. (e.g. problem when using 'Math.sqrt' and the constant a)
-                formula = formula.replace(constantName, constantValue);
-            }
-            return formula;
-        };
-
-        this.eval = function(x, formula) {
-            var result = Number(eval(formula));
-            if (isNaN(result)) {
-                return 0;
-            }
-            return result;
-        };
 
         this.doPointsRounding = function(result) {
             if (self.doFloorPoints()) {
@@ -63,5 +71,6 @@ define(function() {
         this.doCeilPoints = function() {
             return self.pointsRoundingType === "CEIL";
         };
+
     }
 });
