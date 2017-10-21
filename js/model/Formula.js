@@ -14,14 +14,14 @@ define(['util/FormulaHelper'],function(FormulaHelper) {
         this.event = null;
         this.formulaPointsParsed = null;
         this.formulaPerformanceParsed = null;
-        this.zeroPointPerformance = null;
+        this.zeroPointsPerformance = null;
 
         this.buildConstants = function(event, constants) {
             this.event = event;
             this.formulaPointsParsed = this.helper.insertConstants(self.formulaPoints, constants);
             this.formulaPerformanceParsed = this.helper.insertConstants(self.formulaPerformance, constants);
             this.isBuild = true;
-            this.zeroPointPerformance = this.calculatePerformance(0);
+            this.zeroPointsPerformance = this.calculatePerformance(0);
         };
 
         this.calculatePoints = function(performance) {
@@ -30,9 +30,12 @@ define(['util/FormulaHelper'],function(FormulaHelper) {
                 return null;
             }
 
-            // If timed performance worse than 0 point performance, set to zero points.
+            // If performance worse than 0 point performance, set to zero points.
             // prevents e.g. points going up again or negative points.
-            if (this.event.isTimed() && performance > this.zeroPointPerformance) {
+            // TODO: tests
+            if (this.event.isTimed() && performance > this.zeroPointsPerformance) {
+                return 0;
+            } else if (!this.event.isTimed() && performance < this.zeroPointsPerformance) {
                 return 0;
             }
 
@@ -45,6 +48,7 @@ define(['util/FormulaHelper'],function(FormulaHelper) {
                 console.log("Formula object " + this.name + " constants not build")
                 return null;
             }
+
             return this.helper.eval(points, this.formulaPerformanceParsed);
         };
 
