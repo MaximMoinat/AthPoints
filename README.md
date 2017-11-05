@@ -11,7 +11,7 @@ This folder also contains a readme with an explanation if you want to contribute
 The following scoring systems are either incorporated are going to be incorporated:
  - [x] [IAAF combined events](resources/iaaf-combined)
  - [x] [IAAF Hungarian](resources/iaaf-hungarian)
- - [ ] Dutch AtletiekUnie Competition
+ - [x] [Dutch AtletiekUnie Competition](resources/atletiekunie)
  - [x] [Mercier](resources/mercier)
  - [x] [Howard Grubb percentage grading](resources/grubb)
 
