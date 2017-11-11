@@ -5,11 +5,9 @@ define(['lib/knockout-3.4.2', 'lib/d3-4.10.2', 'model/EventCalculators', 'model/
     function(ko, d3, EventCalculators, Formulas, Events) {
         return function() {
             var self = this;
-            // Load all csv files, synchronously
-            $.ajaxSetup({async:false}); // files have to be loaded sequentially
+            // Load all csv files
             this.formulas = new Formulas("./resources/formulas.csv");
             this.events = new Events("./resources/events.csv");
-            $.ajaxSetup({async:true});
 
             this.eventCalculators = new EventCalculators(this.formulas, this.events);
             // this.eventCalculators.addFromConstants("./resources/iaaf-hungarian/women.csv", "Hungarian - Women");

@@ -6,6 +6,8 @@ The constants have been calculated from these tables by a Java script provided i
 
 Indoor events are scored differently and therefore a separate set of tables is given for Indoor events.
 
+Points are rounded to the nearest integer (half up).
+
 ## Formulas
 In contrast to the other scoring systems, there is just one formula to calculate points.
 On the other hand, the formula to calculate performance is slightly different for timed and distance events. This is due to the square root in the formula that only returns the positive result. For timed events this should be the negative result.

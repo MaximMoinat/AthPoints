@@ -2,6 +2,8 @@
 
 Source: [Mercier Scoring Tables 1999: A How-To Guide](http://myweb.lmu.edu/jmureika/track/mercier/Merc99.html#field) by J. Mureika.
 
+In contrast to the other formulas, the points are rounded up.
+
 ## Formulas
 ||||
 |--|--|--|
@@ -19,4 +21,5 @@ The above formulas use the original constants. However, we can simplify these to
 |Points Events|`A * x + B`|
 
 where:\
-`A = a/y` and  `B = (c-b)/y`
+`A = a/y`\
+`B = (c-b)/y`

@@ -6,6 +6,8 @@ define(['lib/d3-4.10.2', 'model/Formula'], function(d3, Formula) {
         var self = this;
         self.formulaMap = {};
 
+        $.ajaxSetup({async:false}); // files have to be loaded sequentially
+
         // Build the formula map
         $.get(formulaPath,
             function (rawText) {

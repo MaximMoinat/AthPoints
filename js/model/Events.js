@@ -6,6 +6,8 @@ define(['lib/d3-4.10.2','model/Event'], function(d3, Event) {
         var self = this;
         self.eventMap = {};
 
+        $.ajaxSetup({async:false}); // files have to be loaded sequentially
+
         $.get(eventPath,
             function (rawText) {
                 var data = d3.csvParse(rawText);
