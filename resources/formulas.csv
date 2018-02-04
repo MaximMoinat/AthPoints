@@ -1,7 +1,6 @@
 name,scoring_system,formula_points,formula_performance,rounding_type
-IAAF_track,IAAF_combined,a * (b - x) ** c,b - (x/a) ** (1/c),FLOOR
-IAAF_throw,IAAF_combined,a * (x - b) ** c,b + (x/a) ** (1/c),FLOOR
-IAAF_jump,IAAF_combined,a * (x *100 - b) ** c,(b + (x/a) ** (1/c)) / 100,FLOOR
+iaaf_track,IAAF_combined,a * (b - x) ** c,b - (x/a) ** (1/c),FLOOR
+iaaf_field,IAAF_combined,a * (x - b) ** c,b + (x/a) ** (1/c),FLOOR
 mercier_track,Mercier,(a * (d / x) - b + c) / y,(d * a ) / (x * y - c + b),CEIL
 mercier_field,Mercier,(a * x ** 0.5 - b + c) / y,((x * y - c + b) / a) ** 2,CEIL
 mercier_multi,Mercier,(a * x - b + c) / y,(x * y - c + b) / a,CEIL
