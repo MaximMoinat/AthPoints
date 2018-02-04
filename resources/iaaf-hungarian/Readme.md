@@ -14,7 +14,7 @@ On the other hand, the formula to calculate performance is slightly different fo
 
 ||To Points|To Performance|
 |--|--|--|
-|Timed Events | <img src="https://latex.codecogs.com/gif.latex?a\cdot(t&plus;b)^2&plus;c" title="a\cdot(t + b)^2+c" /> | <img src="https://latex.codecogs.com/gif.latex?-\sqrt{\frac{p-c}{a}}-b" title="-\sqrt{\frac{p-c}{a}}-b" /> |
-|Distance Events | <img src="https://latex.codecogs.com/gif.latex?a\cdot(x&plus;b)^2&plus;c" title="a\cdot(x + b)^2+c" /> | <img src="https://latex.codecogs.com/gif.latex?\sqrt{\frac{p-c}{a}}-b" title="\sqrt{\frac{p-c}{a}}-b" /> |
+|Timed Events | <img src="https://latex.codecogs.com/gif.latex?p=a\cdot(t&plus;b)^2&plus;c" /> | <img src="https://latex.codecogs.com/gif.latex?t=-\sqrt{\frac{p-c}{a}}-b" /> |
+|Distance Events | <img src="https://latex.codecogs.com/gif.latex?p=a\cdot(x&plus;b)^2&plus;c" /> | <img src="https://latex.codecogs.com/gif.latex?x=\sqrt{\frac{p-c}{a}}-b" /> |
 
 `t` = time in seconds, `x` = distance in meters, `p` =  points
