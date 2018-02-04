@@ -5,10 +5,12 @@ Both scoring for the men and women, as well as the Under 16 category ('Junioren 
 Source: [Atletiek Unie](atletiek.nl)
 
 ## Formulas
-|||
-|--|--|
-|Timed Events | `a / x - b`|
-|Distance Events | `a * √x - b`|
+||||
+|--|--|--|
+|Timed Events | <img src="https://latex.codecogs.com/gif.latex?\frac{a}{t}-b" title="\frac{a}{t}-b" />|<img src="https://latex.codecogs.com/gif.latex?\frac{a}{p&plus;b}" title="\frac{a}{p+b}" />|
+|Distance Events | <img src="https://latex.codecogs.com/gif.latex?a\cdot\sqrt{x}-b" title="a\cdot\sqrt{x}-b" />|<img src="https://latex.codecogs.com/gif.latex?\left(\frac{p&plus;b}{a}\right)^{2}" title="\left(\frac{p+b}{a}\right)^{2}" />|
+
+`t` = time in seconds, `x` = distance in meters, `p` =  points
 
 Note that the following events have an aberrant scoring for performances under a certain limit.
 This aberrant scoring is **NOT** implemented.
