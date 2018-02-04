@@ -12,8 +12,9 @@ Points are rounded to the nearest integer (half up).
 In contrast to the other scoring systems, there is just one formula to calculate points.
 On the other hand, the formula to calculate performance is slightly different for timed and distance events. This is due to the square root in the formula that only returns the positive result. For timed events this should be the negative result.
 
-||||
+||To Points|To Performance|
 |--|--|--|
-|Timed Events | `a * (x + b)^2 + c` | `-1 * √((x - c) / a) - b` |
-|Distance Events | `a * (x + b)^2 + c` | `√((x - c) / a) - b` |
+|Timed Events | <img src="https://latex.codecogs.com/gif.latex?a\cdot(t&plus;b)^2&plus;c" title="a\cdot(t + b)^2+c" /> | <img src="https://latex.codecogs.com/gif.latex?-\sqrt{\frac{p-c}{a}}-b" title="-\sqrt{\frac{p-c}{a}}-b" /> |
+|Distance Events | <img src="https://latex.codecogs.com/gif.latex?a\cdot(x&plus;b)^2&plus;c" title="a\cdot(x + b)^2+c" /> | <img src="https://latex.codecogs.com/gif.latex?\sqrt{\frac{p-c}{a}}-b" title="\sqrt{\frac{p-c}{a}}-b" /> |
 
+`t` = time in seconds, `x` = distance in meters, `p` =  points
